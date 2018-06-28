@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">PH Confession</string>
+    <string name="title_hot">Hot</string>
+    <string name="title_trending">Trending</string>
+    <string name="title_new">New</string>
+    <string name="title_account">Account</string>
+    <string name="title_settings">Settings</string>
 </resources>

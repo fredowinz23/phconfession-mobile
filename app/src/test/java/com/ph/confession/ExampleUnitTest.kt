@@ -1,4 +1,4 @@
-package com.phconfession
+package com.ph.confession
 
 import org.junit.Test
 

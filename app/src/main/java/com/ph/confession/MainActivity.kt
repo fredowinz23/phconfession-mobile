@@ -71,7 +71,7 @@ class MainActivity : BaseActivity() {
 
         supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fl_main, frag, tag)
+                .replace(R.id.main_content, frag, tag)
                 .commit()
     }
 

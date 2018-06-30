@@ -25,8 +25,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/color_greyAccent"
-                app:titleTextColor="@color/text"
+                android:background="@color/color_orange"
+                app:titleTextColor="@color/bg"
                 app:popupTheme="@style/AppTheme.PopupOverlay" >
             </android.support.v7.widget.Toolbar>
 
@@ -41,6 +41,17 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         </android.support.constraint.ConstraintLayout>
+
+        <!-- FAB -->
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginBottom="75dp"
+            android:layout_marginRight="18dp"
+            app:tint="@color/bg"
+            app:srcCompat="@android:drawable/ic_input_add" />
 
     </android.support.design.widget.CoordinatorLayout>
 

@@ -3,12 +3,14 @@ package com.ph.confession
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.util.Log
+import android.widget.Toast
 import com.ph.confession.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
     override val TAG = MainActivity::class.java.simpleName
     override val LAYOUT_ID = R.layout.activity_main
+    override val MAIN_TITLE = "PH Confession"
 
     val FRAG_HOT = "hoT_frag"
     val FRAG_TRENDING = "trending_frag"
@@ -74,5 +76,4 @@ class MainActivity : BaseActivity() {
                 .replace(R.id.main_content, frag, tag)
                 .commit()
     }
-
 }

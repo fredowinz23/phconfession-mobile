@@ -6,11 +6,19 @@ import android.arch.persistence.room.RoomDatabase
 import android.content.Context
 
 @Database(version = 1,
-          entities = [ConfessionEntity::class])
+          entities = [ConfessionEntity::class,
+                      CommentEntity::class,
+                      NotificationEntity::class,
+                      RelateEntity::class,
+                      UserEntity::class])
 abstract class RoomDB : RoomDatabase() {
 
     // DAO objects
     abstract fun confessionDAO(): ConfessionDAO
+    abstract fun commentDAO(): CommentDAO
+    abstract fun notificationDAO(): NotificationDAO
+    abstract fun relateDAO(): RelateDAO
+    abstract fun userDAO(): UserDAO
 
     // DB Instance
     companion object {

@@ -1,17 +1,17 @@
 package com.ph.confession
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
-import android.widget.Toast
-import com.ph.confession.models.RoomDB
-import com.ph.confession.models.ConfessionEntity
 import kotlinx.android.synthetic.main.activity_main.*
 
 abstract class BaseActivity : AppCompatActivity() {
     abstract val TAG : String
     abstract val LAYOUT_ID : Int
     abstract val MAIN_TITLE : String
+    abstract val HAS_FAB : Boolean
+    abstract val HAS_BACK : Boolean
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,19 +23,21 @@ abstract class BaseActivity : AppCompatActivity() {
         toolbarMain.title = MAIN_TITLE
         setSupportActionBar(toolbarMain)
 
-        // Listener to record an activity
-        this.fab.setOnClickListener {
-            Toast.makeText(this, "You added one item", Toast.LENGTH_LONG).show()
-            // This is for testing only
-            val conf = ConfessionEntity()
-            conf.alias = "fred"
-            conf.category = "1"
-            conf.title = "Test title"
-            conf.message = "Hi how are you doing today?"
-
-            val appDatabase: RoomDB = RoomDB.getDatabase(this)
-            appDatabase.confessionDAO().createOne(conf)
+        if (HAS_BACK){
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true);
+            supportActionBar!!.setDisplayShowHomeEnabled(true);
         }
+
+        // Display fab onlick
+        if (HAS_FAB){
+            this.fabMethod()
+        }
+
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     override fun onRestart() {
@@ -66,5 +68,14 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         Log.d(TAG, "onDestroy")
+    }
+
+    private fun fabMethod(){
+
+        // Listener to record an activity
+        this.fab.setOnClickListener {
+            // Start home activity
+            this.startActivity(Intent(this@BaseActivity, WriteConfessionActivity::class.java))
+        }
     }
 }

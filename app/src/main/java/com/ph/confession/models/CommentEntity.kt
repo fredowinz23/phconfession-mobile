@@ -6,20 +6,17 @@ import java.util.*
 
 
 @Entity
-class ConfessionEntity {
+class CommentEntity {
 
     /** Primary key (UUID) */
     @PrimaryKey(autoGenerate = true)
     var id: Int?  = null
 
-    var alias: String? = null
-    var category: String? = null
+    var cId: Int? = null
+    var comment: String? = null
     var title: String? = null
-    var message: String? = null
-    var location: String? = null
+    var alias: String? = null
     var datetime: String? = null
-    var view: Int? = null
-    var lastChange: String? = null
 
 }
 

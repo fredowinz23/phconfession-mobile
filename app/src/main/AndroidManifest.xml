@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ph.confession">
 
+    <!-- To access Data from web APIs: -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher_foreground"
@@ -19,8 +22,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name="com.ph.confession.MainActivity"/>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".WriteConfessionActivity" />
+        <activity android:name=".SelectCategoryActivity" />
     </application>
 
 </manifest>

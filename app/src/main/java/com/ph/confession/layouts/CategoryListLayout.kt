@@ -1,26 +1,25 @@
 package com.ph.confession.layouts
 
-import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.AttributeSet
 import com.ph.confession.ConfessionViewModel
-import com.ph.confession.HotListAdapter
-import com.ph.confession.MainActivity
-import com.ph.confession.models.ConfessionEntity
+import com.ph.confession.Functions
+import com.ph.confession.SelectCategoryActivity
+import com.ph.confession.SelectCategoryAdapter
 
 
-class HotListLayout @JvmOverloads constructor(
+class CategoryListLayout @JvmOverloads constructor(
         context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : RecyclerView(context, attrs, defStyleAttr) {
 
     // Instantiate MainActivity
-    private val mainActivity = context as MainActivity
+    private val activiytContext = context as SelectCategoryActivity
 
     /** Define viewModelProviders */
-    private var viewModel = ViewModelProviders.of(mainActivity).get(ConfessionViewModel::class.java)
+    private var viewModel = ViewModelProviders.of(activiytContext).get(ConfessionViewModel::class.java)
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -30,14 +29,9 @@ class HotListLayout @JvmOverloads constructor(
         this.layoutManager = layoutManager
 
         // Initialize adapter as ActvpackListAdapter
-        //val dataList = arrayListOf("Title one", "title 2", "Title 3","Title one", "title 2", "Title 3")
-        val adapter = HotListAdapter(context, ArrayList())
+        val categories = Functions().category()
+        val adapter = SelectCategoryAdapter(activiytContext, categories)
         // Set adapter to this Recyclerview
         this.adapter = adapter
-
-        // Get activities in ViewModel
-        viewModel.confessionList.observe(mainActivity, Observer<List<ConfessionEntity>> {
-            confessions -> adapter.addItems(confessions!!.asReversed())
-        })
     }
 }

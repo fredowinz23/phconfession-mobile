@@ -1,16 +1,20 @@
 package com.ph.confession
 
+import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.util.Log
-import android.widget.Toast
 import com.ph.confession.fragments.*
 import kotlinx.android.synthetic.main.activity_main.*
+import com.ph.confession.sync.SyncViewModel
+
 
 class MainActivity : BaseActivity() {
     override val TAG = MainActivity::class.java.simpleName
     override val LAYOUT_ID = R.layout.activity_main
     override val MAIN_TITLE = "PH Confession"
+    override val HAS_FAB = true
+    override val HAS_BACK = false
 
     val FRAG_HOT = "hoT_frag"
     val FRAG_TRENDING = "trending_frag"
@@ -46,6 +50,16 @@ class MainActivity : BaseActivity() {
         BottomNavigationViewHelper.disableShiftMode(navigation)
 
         loadFragByTag(FRAG_HOT)
+
+        swipeRefresh.setOnRefreshListener(
+                {
+                    var viewModel = ViewModelProviders.of(this).get(SyncViewModel::class.java)
+                    // Pass context to viewModels
+                    viewModel.context = this
+                    // Call get records from web
+                    viewModel.getRecords()
+                }
+        )
     }
 
     private fun loadFragByTag(tag : String) {

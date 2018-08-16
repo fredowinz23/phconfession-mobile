@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="primeBlue">#195496</color>
+    <color name="primeDarkGray">#656665</color>
+    <color name="primeGray">#babbb6</color>
+
     <color name="bg">#FFFFFF</color>
     <color name="white">#FFFFFF</color>
     <color name="text">#454545</color>
@@ -8,6 +12,7 @@
     <color name="colorAccent">#43a9dc</color>
     <color name="color_red">#b31c1c</color>
     <color name="color_orange">#ff802a</color>
+    <color name="color_black">#000000</color>
     <color name="color_teal">#f6f7f9</color>
     <color name="color_passed">#90bfd1</color>
     <color name="color_done">#006078</color>
@@ -20,12 +25,26 @@
     <color name="color_dark_gray">#8b8c8e</color>
     <color name="color_light_gray">#f7f8f9</color>
     <color name="color_greyPrimary">#F2F2F2</color>
-    <color name="color_greyAccent">#FCFCFC</color>
-
+    <color name="back_gray">#d4d5d6</color>
 
     <color name="colorPrimaryTextDefaultMaterialLight">#DE000000</color>
     <color name="colorSecondaryTextDefaultMaterialLight">#8A000000</color>
 
     <color name="colorPrimaryTextDefaultMaterialDark">#FFFFFFFF</color>
     <color name="colorSecondaryTextDefaultMaterialDark">#B3FFFFFF</color>
+
+    <!--Category colors-->
+    <color name="cat1">#fc9209</color>
+    <color name="cat2">#51ab55</color>
+    <color name="cat3">#e94440</color>
+    <color name="cat4">#0ab3c7</color>
+    <color name="cat5">#9c27b0</color>
+    <color name="cat6">#009688</color>
+    <color name="cat7">#3f51b5</color>
+    <color name="cat8">#e91e63</color>
+    <color name="cat9">#f16695</color>
+    <color name="cat10">#9c27b0</color>
+    <color name="cat11">#0ab3c7</color>
+    <color name="cat12">#d7d8da</color>
+    <color name="cat13">#e94440</color>
 </resources>

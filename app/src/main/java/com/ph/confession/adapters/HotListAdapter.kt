@@ -101,9 +101,14 @@ class HotListAdapter(private var context: Context, arrayList: List<ConfessionEnt
             for (i in 0 until 5) {
                 list.add(dataList[i])
             }
-            this.confessionList = list
-            notifyDataSetChanged()
         }
+        else{
+            for (i in 0 until dataList.size) {
+                list.add(dataList[i])
+            }
+        }
+        this.confessionList = list
+        notifyDataSetChanged()
     }
 
     fun loadMore(dataList: List<ConfessionEntity>, lastItem: Int) {

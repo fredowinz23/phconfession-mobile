@@ -5,7 +5,6 @@ import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import android.os.Handler
 import android.support.design.widget.FloatingActionButton
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -14,12 +13,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
-import android.widget.Toast
 import com.ph.confession.R
 import com.ph.confession.adapters.HotListAdapter
 import com.ph.confession.viewmodels.ConfessionViewModel
 import com.ph.confession.activities.ConfessActivity
-import com.ph.confession.base.api.SyncViewModel
+import com.ph.confession.base.api.GetConfessionAsyncTask
 import com.ph.confession.base.models.ConfessionEntity
 
 /**
@@ -54,7 +52,11 @@ class HotNavFragment : Fragment() {
                 super.onScrolled(recyclerView, dx, dy)
                 val totalItemCount = recyclerView!!.layoutManager.itemCount
                 if (totalItemCount == layoutManager.findLastVisibleItemPosition() + 1) {
-                    adapter.loadMore(dataList,layoutManager.findLastVisibleItemPosition())
+                    try {
+                        adapter.loadMore(dataList, layoutManager.findLastVisibleItemPosition())
+                    }catch(e: Exception){
+
+                    }
                 }
             }
         })
@@ -118,11 +120,6 @@ class HotNavFragment : Fragment() {
     }
 
     private fun getConfessionData(){
-
-        val syncVM = ViewModelProviders.of(activity).get(SyncViewModel::class.java)
-        // Pass context to viewModels
-        syncVM.context = activity
-        // Call get records from web
-        syncVM.getAll()
+        GetConfessionAsyncTask(activity).execute()
     }
 }

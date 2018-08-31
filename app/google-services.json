@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "192811631382",
+    "firebase_url": "https://phconfession-a29ff.firebaseio.com",
+    "project_id": "phconfession-a29ff",
+    "storage_bucket": "phconfession-a29ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:192811631382:android:7279ad328f46a4bd",
+        "android_client_info": {
+          "package_name": "com.ph.confession"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "192811631382-2lnngcqe2c8c3hpndl87u81vppcfig80.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATbhCQXicYqb0uuzpSXwGf3Ofo4Cb68HY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

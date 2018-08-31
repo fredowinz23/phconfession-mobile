@@ -7,6 +7,7 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.os.AsyncTask
 import android.widget.Toast
+import com.google.firebase.iid.FirebaseInstanceId
 import com.ph.confession.activities.LoginActivity
 import com.ph.confession.activities.MainActivity
 import com.ph.confession.base.Api
@@ -26,7 +27,7 @@ class LoginAsyncTask(private val loginActivity: LoginActivity) : AsyncTask<Strin
 
     private val viewModel = ViewModelProviders.of(loginActivity).get(UserViewModel::class.java)
 
-    val loggedInUser = preferences.getString("alias", null)
+    val refreshedToken = FirebaseInstanceId.getInstance().token
 
     override fun onPreExecute() {
         // Before doInBackground
@@ -39,7 +40,8 @@ class LoginAsyncTask(private val loginActivity: LoginActivity) : AsyncTask<Strin
         try {
             //create the parameters and pass on as a parameter
             urlParameters = "alias=" + URLEncoder.encode(params[0], "UTF-8") +
-                    "&password=" + URLEncoder.encode(params[1], "UTF-8")
+                    "&password=" + URLEncoder.encode(params[1], "UTF-8") +
+                    "&fcmToken=$refreshedToken"
         } catch (e: UnsupportedEncodingException) {
             // TODO Auto-generated catch block
             e.printStackTrace()

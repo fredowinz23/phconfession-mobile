@@ -1,22 +1,21 @@
 package com.ph.confession.activities
 
 import android.app.SearchManager
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import com.google.firebase.iid.FirebaseInstanceId
 import com.ph.confession.R
 import com.ph.confession.adapters.NavPagerAdapter
+import com.ph.confession.base.api.GetConfessionAsyncTask
 import com.ph.confession.base.api.LogoutAsyncTask
-import com.ph.confession.base.api.SyncViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
 //        this.startService()
 
+
+//        val refreshedToken = FirebaseInstanceId.getInstance().token
+
         // Check if loggedin
         prefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
 
@@ -40,22 +42,6 @@ class MainActivity : AppCompatActivity() {
             this.startActivity(intent)
             finish()
         }
-//        else
-//        {
-//            // Pull data every 10 seconds
-//            val handler = Handler()
-//            handler.postDelayed(object : Runnable {
-//                override fun run() {
-//                    //Do something after 20 seconds
-//                    val viewModel = ViewModelProviders.of(this@MainActivity).get(SyncViewModel::class.java)
-//                    // Pass context to viewModels
-//                    viewModel.context = this@MainActivity
-//                    // Call get records from web
-//                    viewModel.getAll()
-//                    handler.postDelayed(this, 1000)
-//                }
-//            }, 3000)  //the time is in miliseconds
-//        }
 
         // Set AppBar as ToolBar of viewMain
         val toolbarMain = toolbar
@@ -66,6 +52,11 @@ class MainActivity : AppCompatActivity() {
         viewpager_main.adapter = fragmentAdapter
 
         tabs_main.setupWithViewPager(viewpager_main)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        GetConfessionAsyncTask(this).execute()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

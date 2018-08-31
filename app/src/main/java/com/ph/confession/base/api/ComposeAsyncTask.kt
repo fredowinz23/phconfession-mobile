@@ -37,7 +37,8 @@ class ComposeAsyncTask(val context: SelectCategoryActivity, val conf: Confession
             urlParameters = "alias=" + conf.alias +
                     "&category=" + conf.category +
                     "&title=" + conf.title +
-                    "&message=" + conf.message
+                    "&message=" + conf.message +
+                    "&location="
 
         } catch (e: UnsupportedEncodingException) {
             // TODO Auto-generated catch block
